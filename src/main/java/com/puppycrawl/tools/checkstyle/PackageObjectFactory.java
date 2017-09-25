@@ -170,16 +170,13 @@ public class PackageObjectFactory implements ModuleFactory {
         if (instance == null) {
             instance = createObject(name);
         }
-        final String nameCheck = name + CHECK_SUFFIX;
         if (instance == null) {
-            final String attemptedNames;
+            String attemptedNames = null;
             if (!name.contains(PACKAGE_SEPARATOR)) {
+                final String nameCheck = name + CHECK_SUFFIX;
                 attemptedNames = joinPackageNamesWithClassName(name, packages)
                         + STRING_SEPARATOR + nameCheck + STRING_SEPARATOR
                         + joinPackageNamesWithClassName(nameCheck, packages);
-            }
-            else {
-                attemptedNames = null;
             }
             final LocalizedMessage exceptionMessage = new LocalizedMessage(0,
                 Definitions.CHECKSTYLE_BUNDLE, UNABLE_TO_INSTANTIATE_EXCEPTION_MESSAGE,
