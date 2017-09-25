@@ -172,12 +172,15 @@ public class PackageObjectFactory implements ModuleFactory {
         }
         final String nameCheck = name + CHECK_SUFFIX;
         if (instance == null) {
-            instance = createObject(nameCheck);
-        }
-        if (instance == null) {
-            final String attemptedNames = joinPackageNamesWithClassName(name, packages)
-                    + STRING_SEPARATOR + nameCheck + STRING_SEPARATOR
-                    + joinPackageNamesWithClassName(nameCheck, packages);
+            final String attemptedNames;
+            if (!name.contains(PACKAGE_SEPARATOR)) {
+                attemptedNames = joinPackageNamesWithClassName(name, packages)
+                        + STRING_SEPARATOR + nameCheck + STRING_SEPARATOR
+                        + joinPackageNamesWithClassName(nameCheck, packages);
+            }
+            else {
+                attemptedNames = null;
+            }
             final LocalizedMessage exceptionMessage = new LocalizedMessage(0,
                 Definitions.CHECKSTYLE_BUNDLE, UNABLE_TO_INSTANTIATE_EXCEPTION_MESSAGE,
                 new String[] {name, attemptedNames}, null, getClass(), null);
