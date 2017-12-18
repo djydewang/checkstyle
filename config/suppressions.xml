@@ -28,7 +28,7 @@
     <suppress checks="NPathComplexity" files="[\\/]XdocsPagesTest\.java"/>
     <suppress checks="IllegalCatch" files="[\\/]internal[\\/].*[\\/]\w+Util\.java"/>
     <suppress checks="EmptyBlock" files=".*[\\/]src[\\/]test[\\/]"/>
-    <suppress message="Missing a Javadoc comment|Missing package-info.java file|Expected @throws tag for|missing an @author tag" files=".*[\\/]src[\\/](test|it)[\\/]"/>
+    <suppress message="Missing a Javadoc comment|Missing package-info.java file|Expected @throws tag for|missing an @author tag|缺少 Javadoc|缺少 package-info.java 文件|需要Javadoc注释 @throws|缺少 @author 标签" files=".*[\\/]src[\\/](test|it)[\\/]"/>
     <suppress checks="MagicNumber" files=".*[\\/]src[\\/](test|it)[\\/]"/>
     <suppress checks="AvoidStaticImport" files=".*[\\/]src[\\/](test|it)[\\/]"/>
     <suppress checks="ClassDataAbstractionCoupling" files="[\\/]IndentationCheckTest.java$|[\\/]SuppressWithNearbyCommentFilterTest.java$|[\\/]SuppressionCommentFilterTest.java|[\\/]DetailASTTest.java$"/>
