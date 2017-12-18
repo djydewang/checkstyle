@@ -336,6 +336,24 @@ public class CustomImportOrderCheckTest extends AbstractModuleTestSupport {
     }
 
     @Test
+    public void testFindBetterPatternMatch() throws Exception {
+        final DefaultConfiguration checkConfig =
+            createModuleConfig(CustomImportOrderCheck.class);
+        checkConfig.addAttribute("standardPackageRegExp", "java|javax|event.*");
+        checkConfig.addAttribute("specialImportsRegExp", "An|lang|java|collect|event");
+        checkConfig.addAttribute("thirdPartyPackageRegExp", "com");
+        checkConfig.addAttribute("separateLineBetweenGroups", "true");
+        checkConfig.addAttribute("customImportOrderRules",
+            "STANDARD_JAVA_PACKAGE###SPECIAL_IMPORTS###THIRD_PARTY_PACKAGE");
+        final String[] expected = {
+            "8: " + getCheckMessage(MSG_ORDER, THIRD, SPECIAL,
+                "com.google.common.annotations.Beta"),
+        };
+
+        verify(checkConfig, getPath("InputCustomImportOrderFindBetterPatternMatch.java"), expected);
+    }
+
+    @Test
     public void testImportsContainingJava() throws Exception {
         final DefaultConfiguration checkConfig = createModuleConfig(CustomImportOrderCheck.class);
         checkConfig.addAttribute("customImportOrderRules",

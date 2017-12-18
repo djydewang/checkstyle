@@ -10,6 +10,8 @@ import static sun.tools.util.ModifierFilter.ALL_ACCESS;
 
 import com.google.common.collect.HashMultimap; //warn, ORDER, should be on THIRD_PARTY_PACKAGE, now SPECIAL_IMPORTS
 
+import static sun.tools.util.CommandLine.*;
+
 import antlr.*;
 import antlr.CommonASTWithHiddenTokens;
 import antlr.Token;
